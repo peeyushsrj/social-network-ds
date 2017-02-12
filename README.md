@@ -1,2 +1,3 @@
 # network-s
-A Network of people, with Efficient Design
+
+A Network of people, with Efficient Design.
