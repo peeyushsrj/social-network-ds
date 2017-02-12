@@ -7,25 +7,29 @@ import (
 )
 
 type Relation struct {
-	Rid  int32
+	Rid  int
 	Type string
-	With int32
+	With int
 	//From string
 }
 
 type Person struct {
-	Pid       int32
-	Name      string
-	Relations map[int32]int32 //maps relationid to personid
+	Pid      int
+	Name     string
+	Relation map[string][]int
 }
 
 //-------------------------------------------------------------
 func (p *Person) AddRelation(q *Person, name string) *Person {
-	rel := &Relation{101, name, q.Pid} //store in stack too
-	//Realtion with her identity! not whole her
-	p.Relations = make(map[int32]int32)
-	p.Relations[rel.Rid] = q.Pid
-	//Above relationship defined with me :)
+	r := &Relation{101, name, q.Pid} //store in stack too
+	//relationship stored, pointing to her
+
+	if p.Relation == nil {
+		p.Relation = make(map[string][]int)
+	}
+	//Initializing map
+
+	p.Relation[name] = append(p.Relation[name], r.Rid) //to relatinship id only
 	return p
 }
 
@@ -41,6 +45,7 @@ func main() {
 		p2 := &Person{2, "Shreya", nil}
 
 		p1.AddRelation(p2, "WIFE")
+		p1.AddRelation(p2, "FRIEND")
 		p2.AddRelation(p1, "HUSBAND")
 
 		b, err := json.Marshal(p1)
