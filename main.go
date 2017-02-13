@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type Relation struct {
+type Relationship struct {
 	Rid  int
 	Type string
 	With int
@@ -21,7 +21,7 @@ type Person struct {
 
 //-------------------------------------------------------------
 func (p *Person) AddRelation(q *Person, name string) *Person {
-	r := &Relation{101, name, q.Pid} //store in stack too
+	r := &Relationship{101, name, q.Pid} //store in stack too
 	//relationship stored, pointing to her
 
 	if p.Relation == nil {
