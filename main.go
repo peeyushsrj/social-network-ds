@@ -44,9 +44,9 @@ func main() {
 		p1.Name = "Peeyush" //this id and other details may come from pages: our and other
 		p2 := &Person{2, "X", nil}
 
-		p1.AddRelation(p2, "WIFE")
+		p1.AddRelation(p2, "FATHER")
 		p1.AddRelation(p2, "FRIEND")
-		p2.AddRelation(p1, "HUSBAND")
+		p2.AddRelation(p1, "SON")
 
 		b, err := json.Marshal(p1)
 		if err != nil {
