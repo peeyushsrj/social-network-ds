@@ -42,7 +42,7 @@ func main() {
 
 		p1 := &Person{Pid: 1}
 		p1.Name = "Peeyush" //this id and other details may come from pages: our and other
-		p2 := &Person{2, "Shreya", nil}
+		p2 := &Person{2, "X", nil}
 
 		p1.AddRelation(p2, "WIFE")
 		p1.AddRelation(p2, "FRIEND")
